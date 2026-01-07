@@ -11,33 +11,33 @@ class Exp3a{
     System.out.print("\nEnter number 2: ");
     int b = sc.nextInt();
     System.out.print("Enter operation(+,-,*,/,<<,>>,&,|): ");
-    char c = sc.next().charAt(0);
+    String c = sc.next();
     switch(c) {
-    case '+':
-        ans = a+b;
+    case "+":
+        ans = a + b;
         break;
-    case '-':
-        ans = a-b;
+    case "-":
+        ans = a - b;
         break;
-    case '*':
-        ans = a*b;
+    case "*":
+        ans = a * b;
         break;
-    case '/':
-        ans = a/b;
+    case "/":
+        ans = a / b;
         break;
-    case '<<':
+    case "<<":
         ans = a << b;
         break;
-    case '>>':
+    case ">>":
         ans = a >> b;
         break;
-    case '&':
+    case "&":
         ans = a & b;
         break;
-    case '|':
+    case "|":
         ans = a | b;
         break;
-    case '~':
+    case "~":
         ans = ~a;
         break;
     default:
