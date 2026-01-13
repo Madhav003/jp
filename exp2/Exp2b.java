@@ -8,11 +8,11 @@ class Exp2b{
   double d = f;
   System.out.println(d);
   double dd = 125.4;
-  float ff = (float) d;
-  long ll = (long) f;
-  int ii = (int) l;
-  short ss = (short) i;
-  byte bb = (byte) s;
-  System.out.println(b);
+  float ff = (float) dd;
+  long ll = (long) ff;
+  int ii = (int) ll;
+  short ss = (short) ii;
+  byte bb = (byte) ss;
+  System.out.println(bb);
   }
 }

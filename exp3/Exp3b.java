@@ -11,7 +11,6 @@ class Exp3b{
     for(int i = 0; i<5; i++){
       sum = 0;
       for(int j=i;j<5;j++){
-        System.out.print(arr[j]);
         sum = sum + arr[j];
         if(sum == 0){
           found = true;
@@ -22,5 +21,6 @@ class Exp3b{
     }
     if(found == true) System.out.println("Yes");
     if(found == false) System.out.println("No");
+    sc.close();
   }
 }
