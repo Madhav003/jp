@@ -6,7 +6,7 @@ class Exp3a{
     Scanner sc = new Scanner(System.in);
     while(true){
     System.out.println("Basic Calculator");
-    System.out.print("Enter number 1: ");
+    System.out.print("Enter number 1(enter NULL to quit): ");
     int a = sc.nextInt();
     System.out.print("\nEnter number 2: ");
     int b = sc.nextInt();
