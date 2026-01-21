@@ -8,16 +8,20 @@ class Exp3b{
     }
     int sum = 0;
     boolean found = false;
+    loop:
+    {
     for(int i = 0; i<5; i++){
       sum = 0;
       for(int j=i;j<5;j++){
         sum = sum + arr[j];
+        System.out.print(arr[j]+" ");
         if(sum == 0){
           found = true;
-          break;
+          break loop;
         }
       }
       System.out.println("");
+    }
     }
     if(found == true) System.out.println("Yes");
     if(found == false) System.out.println("No");

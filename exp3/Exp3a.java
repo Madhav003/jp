@@ -10,7 +10,7 @@ class Exp3a{
     int a = sc.nextInt();
     System.out.print("\nEnter number 2: ");
     int b = sc.nextInt();
-    System.out.print("Enter operation(+,-,*,/,<<,>>,&,|): ");
+    System.out.print("Enter operation(+,-,*,/,<<,>>,&,|,~): ");
     String c = sc.next();
     switch(c) {
     case "+":
