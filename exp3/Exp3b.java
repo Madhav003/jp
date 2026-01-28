@@ -17,7 +17,6 @@ class Exp3b{
         System.out.print(arr[j]+" ");
         if(sum == 0){
           found = true;
-          break loop;
         }
       }
       System.out.println("");

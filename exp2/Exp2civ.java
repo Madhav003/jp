@@ -4,6 +4,10 @@ class Exp2civ{
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter number: ");
         int num = sc.nextInt();
+        if(num<0){
+            System.out.println("Palindrome not applicable");
+            return;
+        }
         int temp = num;
         int a;
         int numn;
