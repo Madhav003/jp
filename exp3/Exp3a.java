@@ -44,6 +44,7 @@ class Exp3a{
         System.out.println("Invalid Input");
     }
     System.out.println("Ans: " + ans);
+    sc.close();
     }
   }
 }
