@@ -34,10 +34,13 @@ class Exp4{
     i = sc.nextInt();
     System.out.println("Enter a(rel)");
     r = sc.nextInt();
-        Complex a = new Complex(r,i);
-    Complex b = new Complex(1,2);
+    Complex b = new Complex(r,i);
     Complex c;
     c = a.add(b);
+    System.out.println("addition result:");
+    c.Display();
+    c = a.sub(b);
+    System.out.println("subtraction result:");
     c.Display();
   }
 }
