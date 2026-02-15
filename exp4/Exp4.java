@@ -42,6 +42,7 @@ class Exp4{
     c = a.sub(b);
     System.out.println("subtraction result:");
     c.Display();
+    sc.close();
   }
 }
 
