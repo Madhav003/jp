@@ -1,83 +1,108 @@
 import java.util.Scanner;
 
-class p5a {
-    public static void main(String args[]){
-        Scanner sc= new Scanner(System.in);
-        System.out.println("Enter a paragraph:");
-        String n=sc.nextLine();
+public class Exp5a {
 
-        System.out.println("1)To Count total no. of Sentences and total no. of words in each Sentence:");
+    public static void main(String[] args){
 
-        int wordcount=0;
-        int sentcount=0;
-        int wordinsent=0;
-        System.out.println("\nWord count in each sentence:");
+        Scanner sc=new Scanner(System.in);
 
-        for (int i=0;i<n.length();i++) {
-            char ch =n.charAt(i);
-            if (ch==' ') {
-                wordcount++;
-                wordinsent++;
+        System.out.println("Enter a paragraph: ");
+        String para=sc.nextLine();
+
+        int twcount=0;
+        int tscount=0;
+        char prev=' ';
+        boolean space = false;
+
+        for(int i=0;i<para.length();i++){
+            char c=para.charAt(i);
+            if((c=='?' || c=='!' || c=='.') && (prev!='?' && prev!='.' && prev!='!')){
+                tscount++;
             }
-            if (ch=='.'||ch=='!'||ch=='?') {
-                sentcount++;
-                wordinsent++;
-                wordcount++;
-                System.out.println("Sentence "+sentcount+" = "+wordinsent+" words");
-                wordinsent= 0;
-                
+
+            boolean currsep=(c==' ' || c=='.'|| c=='!' || c== '?');
+
+            if (!currsep){
+                if (!space){
+                    twcount++;
+                    space=true;
+                }
+
+            } else {
+                space=false;
             }
+
+            prev=c;
         }
-        System.out.println("\nTotal number of sentences: "+sentcount);
-        System.out.println("Total number of words: "+wordcount);
+
+        System.out.println("The total number of sentences in the paragraph are: " + tscount);
+        System.out.println("The total number of words in the paragraph are: " + twcount);
+        System.out.println("Now counting the number of words in each sentence:");
+
+        int words=0;
+        int sentenceno=1;
+        prev=' ';
+        space = false;
 
 
-        System.out.println("\n2)To count total no. of chars and occurrence of each char in entire paragraph:");
+        for(int i=0;i<para.length();i++){
+            char c=para.charAt(i);
+            boolean currsep = (c == ' ' || c == '.' || c == '!' || c == '?');
 
-        int totalchar=n.length();
-        System.out.println("\nTotal characters(incl spaces):"+ totalchar);
-        System.out.println("\nCharacter Occurrence:");
 
-        for(int i=0;i<n.length();i++){
-            char curr=n.charAt(i);
-            int count=0;
-            for (int j=0;j<n.length();j++){
-                if (curr==n.charAt(j)){
-                    count++;
+            if (!currsep) {
+                if (!space) {
+                    words++;
+                    space = true;
+                }
+            } else {
+                space = false;
+            }
+
+            if(c=='?' || c=='!' || c=='.'){
+                if(prev!='?' && prev!= '!' && prev!= '.') {
+                    System.out.println("The sentence " + sentenceno + " has " + words + " words.");
+                    sentenceno++;
+                    words = 0;
                 }
             }
-        
-            if (n.indexOf(curr)==i) {
-                System.out.println(curr+" : "+count);
+            prev=c;
+        }
+
+        System.out.println("Now counting the occurance of each character: ");
+
+        int count[]=new int[256];
+        int totalcharacters = 0;
+
+        for(int i=0;i<para.length();i++){
+            if(para.charAt(i) != ' '){
+                totalcharacters++;
             }
         }
 
-        System.out.println("\n3)Search a word in paragraph and print the pos of word(if found):");
-        System.out.println("\nEnter a word to search:");
-        String search= sc.next();
-        
-        boolean found = false;
-        int pos=n.indexOf(search);
-        
-        while (pos != -1) {
-            boolean startOk = (pos == 0 || n.charAt(pos - 1) == ' ');
-            boolean endOk = (pos + search.length() == n.length() || 
-                    n.charAt(pos + search.length()) == ' ' ||
-                    n.charAt(pos + search.length()) == '.' ||
-                    n.charAt(pos + search.length()) == '!' ||
-                    n.charAt(pos + search.length()) == '?');
+        System.out.println("Total characters: " + totalcharacters);
 
-            if (startOk && endOk) {
-            System.out.println("Word found at position: " + pos);
-            found = true;
-            }
-
-             pos = n.indexOf(search, pos + search.length());
-            }
-
-            if (!found) {
-                System.out.println("Word not found in paragraph.");
+        for(int i=0;i<para.length();i++){
+            char c=para.charAt(i);
+            count[c]++;
         }
-       sc.close();
+
+        for(int i=0;i<256;i++){
+            if(count[i]!=0){
+                System.out.println("The character " + (char)i + " has occured " + count[i] + " times");
+            }
+        }
+
+        System.out.println("Enter the word you want to search: ");
+        String searchword=sc.nextLine();
+
+        int idx=para.indexOf(searchword);
+
+        if(idx!=-1){
+            System.out.println("word is found at index: " + idx);
+        }
+        else{
+            System.out.println("word is not found");
+        }
     }
 }
