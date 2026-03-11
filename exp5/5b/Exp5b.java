@@ -14,10 +14,18 @@ public class Exp5b {
             w[i] = w[i].substring(0, 1).toUpperCase() + w[i].substring(1).toLowerCase();
         }
 
-        Arrays.sort(w, (a, b) -> {
-            if (b.length() != a.length()) return b.length() - a.length();
-            return a.compareTo(b);
-        });
+        for (int i = 0; i < w.length - 1; i++) {
+            for (int j = 0; j < w.length - 1 - i; j++) {
+                boolean swap = false;
+                if (w[j].length() < w[j+1].length()) swap = true;
+                if (w[j].length() == w[j+1].length() && w[j].compareTo(w[j+1]) > 0) swap = true;
+                if (swap) {
+                    String t = w[j];
+                    w[j] = w[j+1];
+                    w[j+1] = t;
+                }
+            }
+        }
 
         String r = "";
         for (int i = 0; i < w.length; i++) {
