@@ -1,4 +1,4 @@
-package sem4.jp.innovative.com.pdtournament.agents;
+package com.pdtournament.agents;
 
 import java.util.ArrayList;
 

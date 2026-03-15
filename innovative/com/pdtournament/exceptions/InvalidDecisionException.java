@@ -1,4 +1,4 @@
-package sem4.jp.innovative.com.pdtournament.exceptions;
+package com.pdtournament.exceptions;
 
 public class InvalidDecisionException extends Exception {
     public InvalidDecisionException(String message) {

@@ -1,4 +1,4 @@
-package sem4.jp.innovative.com.pdtournament.io;
+package com.pdtournament.io;
 
 import java.io.FileWriter;
 import java.io.IOException;

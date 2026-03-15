@@ -1,7 +1,7 @@
 Rank,Agent,Coins
-1,AlwaysDefect,44
-2,Grudger,36
-3,TitForTat,33
-4,Pavlov,29
-5,RandomAgent,22
-6,AlwaysCooperate,21
+1,AlwaysDefect,40
+2,Grudger,37
+3,TitForTat,36
+4,RandomAgent,31
+5,Pavlov,28
+6,AlwaysCooperate,19

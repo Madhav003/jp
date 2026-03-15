@@ -1,15 +1,15 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import sem4.jp.innovative.com.pdtournament.agents.Agent;
-import sem4.jp.innovative.com.pdtournament.agents.AlwaysCooperate;
-import sem4.jp.innovative.com.pdtournament.agents.AlwaysDefect;
-import sem4.jp.innovative.com.pdtournament.agents.Grudger;
-import sem4.jp.innovative.com.pdtournament.agents.Pavlov;
-import sem4.jp.innovative.com.pdtournament.agents.RandomAgent;
-import sem4.jp.innovative.com.pdtournament.agents.TitForTat;
-import sem4.jp.innovative.com.pdtournament.core.Tournament;
-import sem4.jp.innovative.com.pdtournament.io.DashboardPrinter;
+import com.pdtournament.agents.Agent;
+import com.pdtournament.agents.AlwaysCooperate;
+import com.pdtournament.agents.AlwaysDefect;
+import com.pdtournament.agents.Grudger;
+import com.pdtournament.agents.Pavlov;
+import com.pdtournament.agents.RandomAgent;
+import com.pdtournament.agents.TitForTat;
+import com.pdtournament.core.Tournament;
+import com.pdtournament.io.DashboardPrinter;
 
 public class Main {
 	private static final int ROUNDS_PER_GAME = 10;
