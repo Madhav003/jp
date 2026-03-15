@@ -7,12 +7,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FileLogger {
-    public synchronized void clearFiles() {
+    public synchronized void clearFiles(int roundsPerGame) {
         FileWriter writer = null;
 
         try {
             writer = new FileWriter("results.txt", false);
-            writer.write("");
+            writer.write("Rounds per game: " + roundsPerGame + "\n");
+            writer.write("----------------------------------------\n");
         } catch (IOException e) {
             System.out.println("Error clearing results.txt: " + e.getMessage());
         } finally {

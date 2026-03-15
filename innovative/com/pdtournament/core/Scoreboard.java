@@ -23,10 +23,6 @@ public class Scoreboard {
         int current = scores.get(name);
         int updated = current + delta;
 
-        if (updated < 0) {
-            updated = 0;
-        }
-
         scores.put(name, updated);
     }
 

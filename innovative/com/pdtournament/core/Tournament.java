@@ -20,7 +20,7 @@ public class Tournament {
     }
 
     public HashMap<String, Integer> startTournament() {
-        fileLogger.clearFiles();
+        fileLogger.clearFiles(rounds);
 
         for (int i = 0; i < agents.size(); i++) {
             scoreboard.addAgent(agents.get(i).getName());

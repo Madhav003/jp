@@ -37,7 +37,8 @@ public class Game implements Runnable {
                 scoreboard.updateScore(agentA.getName(), scores[0]);
                 scoreboard.updateScore(agentB.getName(), scores[1]);
 
-                String result = agentA.getName() + " vs " + agentB.getName() + " | Round " + round + " | "
+                String result = agentA.getName() + " vs " + agentB.getName() + " | Round " + round + "/" + rounds
+                    + " | "
                         + decisionA + " | " + decisionB + " | " + scores[0] + " " + scores[1];
 
                 roundResults.add(result);
@@ -73,25 +74,25 @@ public class Game implements Runnable {
         int[] scores = new int[2];
 
         if ("COOPERATE".equals(decisionA) && "COOPERATE".equals(decisionB)) {
+            scores[0] = 3;
+            scores[1] = 3;
+            return scores;
+        }
+
+        if ("DEFECT".equals(decisionA) && "DEFECT".equals(decisionB)) {
             scores[0] = 1;
             scores[1] = 1;
             return scores;
         }
 
-        if ("DEFECT".equals(decisionA) && "DEFECT".equals(decisionB)) {
-            scores[0] = 0;
+        if ("DEFECT".equals(decisionA) && "COOPERATE".equals(decisionB)) {
+            scores[0] = 5;
             scores[1] = 0;
             return scores;
         }
 
-        if ("DEFECT".equals(decisionA) && "COOPERATE".equals(decisionB)) {
-            scores[0] = 2;
-            scores[1] = -1;
-            return scores;
-        }
-
-        scores[0] = -1;
-        scores[1] = 2;
+        scores[0] = 0;
+        scores[1] = 5;
         return scores;
     }
 }
