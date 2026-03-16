@@ -18,8 +18,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Random randomNum = new Random();
-		int roundsPerGame = randomNum.nextInt(maxrpg - mrpg + 1)
-				+ mrpg;
+		int roundsPerGame = randomNum.nextInt(maxrpg - mrpg + 1) + mrpg;
 
 		ArrayList<Agent> agents = new ArrayList<Agent>();
 		agents.add(new AlwaysCooperate());
