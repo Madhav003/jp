@@ -8,9 +8,6 @@ public class RandomAgent extends Agent {
     }
 
     public String decide(ArrayList<String> opponentHistory) {
-        if (Math.random() >= 0.5) {
-            return "COOPERATE";
-        }
-        return "DEFECT";
+        return Math.random() < 0.5 ? "COOPERATE" : "DEFECT";
     }
 }

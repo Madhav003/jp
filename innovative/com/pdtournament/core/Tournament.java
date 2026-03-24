@@ -26,27 +26,30 @@ public class Tournament {
             scoreboard.addAgent(agents.get(i).getName());
         }
 
-        ArrayList<Thread> threads = new ArrayList<Thread>();
+        int n = agents.size();
+        Thread[] threads = new Thread[n * (n + 1) / 2];
+        int threadIndex = 0;
 
         for (int i = 0; i < agents.size(); i++) {
             for (int j = i; j < agents.size(); j++) {
                 Game game = new Game(agents.get(i), agents.get(j), rounds, scoreboard, fileLogger);
                 Thread thread = new Thread(game);
-                threads.add(thread);
+                threads[threadIndex] = thread;
+                threadIndex++;
                 thread.start();
             }
         }
 
-        for (int i = 0; i < threads.size(); i++) {
+        for (int i = 0; i < threadIndex; i++) {
             try {
-                threads.get(i).join();
+                threads[i].join();
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
         }
 
         HashMap<String, Integer> finalScores = scoreboard.getScores();
-        fileLogger.writeLeaderboard(finalScores);
+        fileLogger.writeLeaderboard(scoreboard);
         return finalScores;
     }
 }

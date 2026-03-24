@@ -13,12 +13,9 @@ import com.pdtournament.core.Tournament;
 import com.pdtournament.io.DashboardPrinter;
 
 public class Main {
-	private static final int mrpg = 10;
-	private static final int maxrpg = 100;
-
 	public static void main(String[] args) {
-		Random randomNum = new Random();
-		int roundsPerGame = randomNum.nextInt(maxrpg - mrpg + 1) + mrpg;
+		int roundsPerGame = 20 + new Random().nextInt(1000);
+		System.out.println("Rounds per game selected: " + roundsPerGame);
 
 		ArrayList<Agent> agents = new ArrayList<Agent>();
 		agents.add(new AlwaysCooperate());
@@ -34,7 +31,6 @@ public class Main {
 		DashboardPrinter dashboardPrinter = new DashboardPrinter();
 		dashboardPrinter.printScoreboard(finalScores);
 
-		System.out.println("Rounds per game: " + roundsPerGame);
 		System.out.println("\nDetailed rounds written to results.txt");
 		System.out.println("Final leaderboard written to leaderboard.csv");
 	}

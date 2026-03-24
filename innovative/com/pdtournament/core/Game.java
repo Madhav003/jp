@@ -27,10 +27,17 @@ public class Game implements Runnable {
         ArrayList<String> historyA = new ArrayList<String>();
         ArrayList<String> historyB = new ArrayList<String>();
 
-        for (int round = 1; round <= rounds; round++) {
-            try {
-                String decisionA = getValidDecision(agentA, historyB);
-                String decisionB = getValidDecision(agentB, historyA);
+        try {
+            for (int round = 1; round <= rounds; round++) {
+                String decisionA = agentA.decide(historyB);
+                if (!"COOPERATE".equals(decisionA) && !"DEFECT".equals(decisionA)) {
+                    throw new InvalidDecisionException(agentA.getName() + " returned: " + decisionA);
+                }
+
+                String decisionB = agentB.decide(historyA);
+                if (!"COOPERATE".equals(decisionB) && !"DEFECT".equals(decisionB)) {
+                    throw new InvalidDecisionException(agentB.getName() + " returned: " + decisionB);
+                }
 
                 int[] scores = getRoundScores(decisionA, decisionB);
 
@@ -46,28 +53,17 @@ public class Game implements Runnable {
 
                 historyA.add(decisionA);
                 historyB.add(decisionB);
-            } catch (InvalidDecisionException e) {
-                String message = "Invalid decision in game " + agentA.getName() + " vs " + agentB.getName() + ": "
-                        + e.getMessage();
-                System.out.println(message);
-                fileLogger.logRound(message);
-                break;
             }
+        } catch (InvalidDecisionException e) {
+            String message = "Invalid decision in game " + agentA.getName() + " vs " + agentB.getName() + ": "
+                    + e.getMessage();
+            System.out.println(message);
+            fileLogger.logRound(message);
         }
     }
 
     public ArrayList<String> getRoundResults() {
         return roundResults;
-    }
-
-    private String getValidDecision(Agent agent, ArrayList<String> opponentHistory) throws InvalidDecisionException {
-        String decision = agent.decide(opponentHistory);
-
-        if (!"COOPERATE".equals(decision) && !"DEFECT".equals(decision)) {
-            throw new InvalidDecisionException(agent.getName() + " returned: " + decision);
-        }
-
-        return decision;
     }
 
     private int[] getRoundScores(String decisionA, String decisionB) {

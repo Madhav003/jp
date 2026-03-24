@@ -11,35 +11,15 @@ public class Pavlov extends Agent {
         if (opponentHistory.size() == 0) {
             return "COOPERATE";
         }
-
-        String myDecision = "COOPERATE";
-
-        for (int i = 0; i < opponentHistory.size(); i++) {
-            String opponentDecision = opponentHistory.get(i);
-            int score = getRoundScore(myDecision, opponentDecision);
-
-            if (score == 0 || score == -1) {
-                if ("COOPERATE".equals(myDecision)) {
-                    myDecision = "DEFECT";
-                } else {
-                    myDecision = "COOPERATE";
-                }
-            }
+        String lastOpponentMove = opponentHistory.get(opponentHistory.size() - 1);
+        String myLastMove = "COOPERATE";
+        if (opponentHistory.size() > 1 && "DEFECT".equals(opponentHistory.get(opponentHistory.size() - 2))) {
+            myLastMove = "DEFECT";
         }
-
-        return myDecision;
-    }
-
-    private int getRoundScore(String myDecision, String opponentDecision) {
-        if ("COOPERATE".equals(myDecision) && "COOPERATE".equals(opponentDecision)) {
-            return 1;
+        if (("COOPERATE".equals(myLastMove) && "COOPERATE".equals(lastOpponentMove))
+                || ("DEFECT".equals(myLastMove) && "DEFECT".equals(lastOpponentMove))) {
+            return "COOPERATE";
         }
-        if ("DEFECT".equals(myDecision) && "DEFECT".equals(opponentDecision)) {
-            return 0;
-        }
-        if ("DEFECT".equals(myDecision) && "COOPERATE".equals(opponentDecision)) {
-            return 2;
-        }
-        return -1;
+        return "DEFECT";
     }
 }
