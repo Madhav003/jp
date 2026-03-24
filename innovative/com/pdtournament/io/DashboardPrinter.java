@@ -1,25 +1,20 @@
 package com.pdtournament.io;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
 public class DashboardPrinter {
-    public void printScoreboard(HashMap scores) {
-        ArrayList<Map.Entry> entries = new ArrayList<Map.Entry>(scores.entrySet());
-
-        for (int i = 0; i < entries.size() - 1; i++) {
-            for (int j = i + 1; j < entries.size(); j++) {
-                Integer scoreA = (Integer) entries.get(i).getValue();
-                Integer scoreB = (Integer) entries.get(j).getValue();
-
-                if (scoreB > scoreA) {
-                    Map.Entry temp = entries.get(i);
-                    entries.set(i, entries.get(j));
-                    entries.set(j, temp);
-                }
-            }
+    private static class ScoreEntryComparator implements Comparator<Map.Entry<String, Integer>> {
+        public int compare(Map.Entry<String, Integer> entryA, Map.Entry<String, Integer> entryB) {
+            return entryB.getValue().compareTo(entryA.getValue());
         }
+    }
+
+    public void printScoreboard(HashMap<String, Integer> scores) {
+        ArrayList<Map.Entry<String, Integer>> entries = new ArrayList<Map.Entry<String, Integer>>(scores.entrySet());
+        entries.sort(new ScoreEntryComparator());
 
         System.out.println("\nFinal Tournament Standings");
         System.out.println("-------------------------");
