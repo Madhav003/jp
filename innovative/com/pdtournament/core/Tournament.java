@@ -29,7 +29,7 @@ public class Tournament {
         ArrayList<Thread> threads = new ArrayList<Thread>();
 
         for (int i = 0; i < agents.size(); i++) {
-            for (int j = i + 1; j < agents.size(); j++) {
+            for (int j = i; j < agents.size(); j++) {
                 Game game = new Game(agents.get(i), agents.get(j), rounds, scoreboard, fileLogger);
                 Thread thread = new Thread(game);
                 threads.add(thread);
